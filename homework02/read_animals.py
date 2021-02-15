@@ -17,15 +17,21 @@ def main():
     with open(sys.argv[1], 'r') as f:
         animal_dict = json.load(f)
         animals = animal_dict['animals']
+        rand_ani = random.choice(animals)
         avg_arms = avg_body_part(animals, 'arms')
         avg_legs = avg_body_part(animals, 'legs')
         avg_tails = avg_body_part(animals, 'tail')
 
-	 
-        print(random.choice(animals))
-        print('Average number of arms:', avg_arms)
-        print('Average number of legs:', avg_legs)
-        print('Average number of tails:', avg_tails)
+        print('The random animal has the head of a:', rand_ani['head'])
+        print('A body of a(n)', rand_ani['body'][0:rand_ani['body'].find('-')], 'and a(n)', rand_ani['body'][rand_ani['body'].find('-') + 1 : len(rand_ani['body'])])
+        print(rand_ani['arms'], 'arms')
+        print(rand_ani['legs'], 'legs')
+        print('And', rand_ani['tail'], 'tails')
+        print()
+        print('Body Part Averages:')
+        print('Arms:', avg_arms)
+        print('Legs:', avg_legs)
+        print('Tails', avg_tails)
 
 if __name__ == '__main__':
     main()
