@@ -1,6 +1,6 @@
 # Homework02
 
-For this homework assignment a list of 20 random animals and their individual characteristics are generated. A tool was created to pick one animal at random and print out its characteristics. A newly added feature of the tool calcualtes and prints out the average number of arms, legs, and tails from all the animals in the list.
+For this homework assignment a list of 20 random animals and their individual characteristics are generated. A tool was created to pick one animal at random and print out its characteristics. A newly added feature of the tool calculates and prints out the average number of arms, legs, and tails from all the animals in the list.
 
 ## Download and Run Scripts Directly
 
