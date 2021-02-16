@@ -11,7 +11,8 @@ class TestReadAnimals(unittest.TestCase):
 		self.assertEqual(avg_body_part(animals, 'legs'), 9.0)
 		self.assertEqual(avg_body_part(animals, 'tail'), 13.0)
 		self.assertRaises(TypeError, avg_body_part, 'hello', 'tails')
-		self.assertRaises(KeyError, avg_body_part, animals, 'feet')	
+		self.assertRaises(KeyError, avg_body_part, animals, 'feet')
+		self.assertRaises(ZeroDivisionError, avg_body_part, [], 'arms')
 
 if __name__ == '__main__':
     unittest.main()
