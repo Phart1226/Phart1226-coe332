@@ -21,17 +21,18 @@ def main():
         avg_arms = avg_body_part(animals, 'arms')
         avg_legs = avg_body_part(animals, 'legs')
         avg_tails = avg_body_part(animals, 'tail')
-
-        print('The random animal has the head of a:', rand_ani['head'])
+        
+        print()
+        print('The random animal has the head of a', rand_ani['head'])
         print('A body of a(n)', rand_ani['body'][0:rand_ani['body'].find('-')], 'and a(n)', rand_ani['body'][rand_ani['body'].find('-') + 1 : len(rand_ani['body'])])
         print(rand_ani['arms'], 'arms')
         print(rand_ani['legs'], 'legs')
         print('And', rand_ani['tail'], 'tails')
         print()
-        print('Body Part Averages:')
+        print('Body Part Averages for the Whole List of Animals:')
         print('Arms:', avg_arms)
         print('Legs:', avg_legs)
-        print('Tails', avg_tails)
+        print('Tails:', avg_tails)
 
 if __name__ == '__main__':
     main()
