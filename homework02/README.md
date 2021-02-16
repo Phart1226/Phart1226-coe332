@@ -41,7 +41,7 @@ docker-compose run read-ani       # generates output
 ## Running the Unit Tests
 
 The unit tests have been containerized to make the running procedure simplier.
-The command below tests assert calls to the function avg\_body\_part(), testing the
+The command below tests assert calls to the function avg\_body\_part() within read\_animals.py, testing the
 simple average calcualtion the function performs as well as its ability to catch a TypeError and KeyError 
 
 ```bash
