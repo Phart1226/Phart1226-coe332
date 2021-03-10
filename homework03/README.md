@@ -1,6 +1,6 @@
 # Homework03
 
-For this homework assignment, the goal is to extract qualified aniamls from an animals.json datafile using GET requests to ping a flask app running locally on the isp machine. The extraction qualifications have been predefined within consumers.py. 
+For this homework assignment, the goal is to extract qualified animals from an animals.json datafile using GET requests to ping a flask app running locally on the isp machine. The extraction qualifications have been predefined within consumers.py. 
 
 ## Building the Flask app
 
@@ -52,7 +52,7 @@ docker ps -a
 
 Find the app that is running on port 5012 and copy the container ID
 
-Then run the following command and pasting in the copied container ID:
+Run the following command, pasting in the copied container ID:
 
 ```bash
 docker stop <container ID>
@@ -60,7 +60,7 @@ docker stop <container ID>
 
 ## Remove the Stopped Flask app
 
-To remove the stopped Flask app permanently from the server, run the following command paste in the previously copied container ID
+To remove the stopped Flask app permanently from the server, run the following command, pasting in the previously copied container ID
 
 ```bash
 docker rm <container ID>
