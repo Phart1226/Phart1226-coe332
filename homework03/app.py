@@ -1,25 +1,40 @@
-from flask import Flask
+from flask import Flask, request
 import petname
 import random
+import json 
 
 app = Flask(__name__)
 
 @app.route('/', methods = ['GET'])
 def helloworld():
     return "Hello World!!! Coming to you from a docker container"
-@app.route('/animal', methods= ['GET'])
+
+@app.route('/animals', methods= ['GET'])
 def gen_anim():
-     this_animal = {}
-     this_animal['head'] = random.choice(['snake', 'bull', 'lion', 'raven', 'bunny'])
-     this_animal['body'] = petname.name() + '-' + petname.name()
-     this_animal['arms'] = random.randint(1,5) * 2
-     this_animal['legs'] = random.randint(1,4) * 3
-     this_animal['tail'] = this_animal['legs'] + this_animal['arms']
+     animals = []
+     with open('/app/animals.json', 'r') as json_file:
+          animals = json.load(json_file)
 
-     print_str = 'Head:' + str(this_animal['head']) + ', Body:' + str(this_animal['body']) + ', Arms:' + str(this_animal['arms']) + ', Legs:' + str(this_animal['arms']) + ', Tails:' + str(this_animal['tail']) + '\n'
+     return animals
 
-     return print_str
+@app.route('/animals/arms/', methods= ['GET'])
+def get_arms():
+     arms = request.args.get('arms')
+     animals = gen_anim()
+     ani_arms = [animal for animal in animals["animals"] if animal["arms"] == int(arms)]
+     
+     return json.dumps(ani_arms)
+ 
+@app.route('/animals/head/', methods= ['GET'])    
+def get_head():
+     head = request.args.get('head')
+     animals = gen_anim()
+     ani_head = [animal for animal in animals["animals"] if animal["head"] == head]
+     
+     return json.dumps(ani_head)
 
+
+     
 # the next statement should always appear at the bottom of your flask app
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
