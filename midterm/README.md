@@ -20,9 +20,9 @@ From within the web directory of the midterm folder, run:
 python3 consumer.py 
 ```
 
-This file contains 7 predefined get commands to query the redis database where the animal data is stored.
+This file contains 7 predefined GET commands to query the redis database where the animal data is stored.
 
-Below is an example of the output from this command.
+Below is an example of the output from this command:
 
 
 ```bash
@@ -51,9 +51,9 @@ UPDATED ANIMAL
 
 ALL ANIMALS: a list of all the current animals and their stats stored in the redis database
 
-ANIMAL UUIDS: a list of all the uuids for each animal in the redis database. These are also the key values used to uniquely store each animal in the database.
+ANIMAL UUIDS: a list of all the uuids for each animal in the redis database. These are also the keys used to uniquely store each animal in the database.
 
-ANIMAL WITH UUID: Returns the animal with the UUID that is predefined in the route to grab a specific animal from the database. This UUID can be changed by using the following curl command:
+ANIMAL WITH UUID: Returns the animal with the UUID that is predefined in the route to grab a specific animal from the database. A different UUID can be queried using the following command:
 
 ```bash
 curl localhost:5012/animals/uuid/?uuid==<uuid>
@@ -69,7 +69,7 @@ ANIMALS NUM LEGS PER ANIMAL: query to get the average number of legs per animal 
 
 NUMBER OF ANIMALS: query to get the number of animals in the database
 
-UPDATED ANIMAL: updates an animal given a uuid and animal stats, returns the updated animal, and updates the animal in the database. The output updates a predefined animal with predefined stats to update in the route, however a different animal can be update by the following curl command:
+UPDATED ANIMAL: updates an animal given a uuid and animal stats, returns the updated animal, and updates the animal in the database. The output returns the predefined animal with predefined stats to update in the route, however a different animal can be update by the following curl command:
 
 ```bash
 curl localhost:5012/animals/update/?uuid=<uuid>&<stat>=<updated stat>
