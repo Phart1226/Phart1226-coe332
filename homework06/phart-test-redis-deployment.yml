@@ -4,7 +4,6 @@ kind: Deployment
 metadata:
   name: redis-pvc-deployment
   labels:
-    app: redis-pvc-app
     username: phart
     env: test
     app: phart-test-redis
