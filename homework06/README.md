@@ -118,7 +118,11 @@ curl 10.104.201.42:5000/animals/update/?uuid=<uuid>&<stat>=<updated stat>
 ```
 
 ---
-**NOTE***
+**NOTE**
 The IP address and port number used in the curl commands are the IP address and port the flask service is running on. These can be obtained by running the kubectl get services command.
 ---
 
+---
+**NOTE**
+All Services, Deployments, and Pods were created using the kubectl apply -f <file name> command
+--- 
