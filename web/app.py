@@ -7,7 +7,7 @@ import datetime
 import redis
 
 app = Flask(__name__)
-rd = redis.StrictRedis(host='10.107.122.23', port=6379, db=0)
+rd = redis.StrictRedis(host='10.102.185.56', port=6379, db=0)
 # test route
 @app.route('/', methods = ['GET'])
 def helloworld():

@@ -2,21 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: phart-test-flask-deployment
+  name: phart-hw7-flask-deployment
   labels:
     username: phart
     env: test
-    app: phart-test-flask
+    app: phart-hw7-flask
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: phart-test-flask
+      app: phart-hw7-flask
   template:
     metadata:
       labels:
-        app: phart-test-flask
+        app: phart-hw7-flask
     spec:
       containers:
         - name: flask-container
+          imagePullPolicy: Always
           image: phart26/phart-midterm:4.0

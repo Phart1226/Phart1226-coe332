@@ -2,13 +2,13 @@ import json
 import requests
 
 # reset database
-response_setDB = requests.get(url="http://10.104.201.42:5000/animals/reset")
+response_setDB = requests.get(url="http://10.109.147.196:5000/animals/reset")
 
 # grab all animals in db
-response_animals = requests.get(url="http://10.104.201.42:5000/animals")
+response_animals = requests.get(url="http://10.109.147.196:5000/animals")
 
 # grab all animal uuids
-response_keys = requests.get(url="http://10.104.201.42:5000/animals/keys")
+response_keys = requests.get(url="http://10.109.147.196:5000/animals/keys")
 
 # grab animal with a specific UUID
 #response_uuid = requests.get(url="http://10.104.201.42:5000/animals/uuid/?uuid=130bb2f6-558b-44b1-afed-c7f4adbddb27")
@@ -19,13 +19,13 @@ response_keys = requests.get(url="http://10.104.201.42:5000/animals/keys")
 
 # grab all animals in json file that are within the startDate and endDate
 p = {'startDate':'2014-01-01', 'endDate':'2021-01-01'}
-response_dates = requests.get(url="http://10.104.201.42:5000/animals/dates/", params = p)
+response_dates = requests.get(url="http://10.109.147.196:5000/animals/dates/", params = p)
 
 # get average legs per animal
-response_legs = requests.get(url="http://10.104.201.42:5000/animals/legs")
+response_legs = requests.get(url="http://10.109.147.196:5000/animals/legs")
 
 # get count of animals in database
-response_count = requests.get(url="http://10.104.201.42:5000/animals/count")
+response_count = requests.get(url="http://10.109.147.196:5000/animals/count")
 
 
 # print reset database message

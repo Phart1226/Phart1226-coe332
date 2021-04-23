@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: phart-test-flask-service
+  name: phart-hw7-redis-service
   labels:
     username: phart
     env: test
 spec:
   type: ClusterIP
   selector:
-    app: phart-test-flask
+    app: phart-hw7-redis
   ports:
-  - name: phart-flask
-    port: 5000
-    targetPort: 5000
+  - name: phart-redis
+    port: 6379
+    targetPort: 6379
