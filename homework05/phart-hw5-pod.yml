@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: phart-hw5
+  labels:
+    greeting: personalized
+spec:
+  containers:
+    - name: phart-hw5
+      image: ubuntu:18.04
+      env:
+        - name: "NAME"
+          value: "Preston"
+      command: ['sh', '-c', 'echo "Hello $NAME" && sleep 3600']

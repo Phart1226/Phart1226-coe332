@@ -1,0 +1,22 @@
+---
+version: "3"
+
+services:
+        gen-anim:
+                image: phart26/json-parser:0.1
+                # where the files will be saved locally
+                volumes:
+                    - ./test:/data
+                user: "869418:816966"
+                command: generate_animals.py /data/animals.json
+        read-anim:
+                image: phart26/json-parser:0.1
+                volumes:
+                    - ./test:/data
+                user: "869418:816966"
+                command: read_animals.py /data/animals.json
+        test-anim:
+                image: phart26/json-parser:0.1
+                user: "869418:816966"
+                command: test_read_animals.py
+...

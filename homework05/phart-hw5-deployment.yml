@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phart-hw5-deployment
+  labels:
+    greeting: personalized
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: phart-hw5
+  template:
+    metadata:
+      labels:
+        app: phart-hw5
+    spec:
+      containers:
+        - name: phart-hw5
+          image: ubuntu:18.04
+          env:
+            - name: "NAME"
+              value: "Preston"
+            - name: "POD_IP"
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+          command: ['sh', '-c', 'echo "Hello $NAME from $POD_IP" && sleep 3600']

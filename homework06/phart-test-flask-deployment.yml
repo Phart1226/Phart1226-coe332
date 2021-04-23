@@ -1,0 +1,22 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: phart-test-flask-deployment
+  labels:
+    username: phart
+    env: test
+    app: phart-test-flask
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: phart-test-flask
+  template:
+    metadata:
+      labels:
+        app: phart-test-flask
+    spec:
+      containers:
+        - name: flask-container
+          image: phart26/phart-midterm:4.0

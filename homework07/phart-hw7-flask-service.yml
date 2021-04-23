@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: phart-hw7-flask-service
+  labels:
+    username: phart
+    env: test
+spec:
+  type: ClusterIP
+  selector:
+    app: phart-hw7-flask
+  ports:
+  - name: phart-flask
+    port: 5000
+    targetPort: 5000

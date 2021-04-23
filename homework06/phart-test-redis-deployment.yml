@@ -1,0 +1,29 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-pvc-deployment
+  labels:
+    username: phart
+    env: test
+    app: phart-test-redis
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: phart-test-redis
+  template:
+    metadata:
+      labels:
+        app: phart-test-redis
+    spec:
+      containers:
+        - name: redis-container
+          image: redis:5.0.0
+          volumeMounts:
+          - name: redis-phart-test
+            mountPath: "/data"
+      volumes:
+      - name: redis-phart-test
+        persistentVolumeClaim:
+          claimName: redis-phart-test
