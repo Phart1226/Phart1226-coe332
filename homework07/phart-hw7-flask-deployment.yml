@@ -8,7 +8,7 @@ metadata:
     env: test
     app: phart-hw7-flask
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: phart-hw7-flask
@@ -21,3 +21,4 @@ spec:
         - name: flask-container
           imagePullPolicy: Always
           image: phart26/phart-midterm:4.0
+          command: ['python3', 'api.py']
