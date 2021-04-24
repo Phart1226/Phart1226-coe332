@@ -8,7 +8,7 @@ metadata:
     env: test
     app: phart-hw7-worker
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: phart-hw7-worker
@@ -20,4 +20,5 @@ spec:
       containers:
         - name: worker-container
           imagePullPolicy: Always
-          image: phart26/phart-midterm:4.0
+          image: phart26/phart-hw7
+          command: ['python', 'api.py']

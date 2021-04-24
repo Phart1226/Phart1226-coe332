@@ -20,5 +20,5 @@ spec:
       containers:
         - name: flask-container
           imagePullPolicy: Always
-          image: phart26/phart-midterm:4.0
-          command: ['python3', 'api.py']
+          image: phart26/phart-hw7
+          command: ['python', 'api.py']
