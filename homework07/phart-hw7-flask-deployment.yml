@@ -19,5 +19,5 @@ spec:
     spec:
       containers:
         - name: flask-container
-          # imagePullPolicy: Always
+          imagePullPolicy: Always
           image: phart26/phart-midterm:4.0
