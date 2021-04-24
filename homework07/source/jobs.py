@@ -1,6 +1,6 @@
 import uuid
 from hotqueue import HotQueue
-from redis import StrictRedis
+import redis
 
 q = HotQueue("queue", host='10.102.185.56', port=6379, db=1)
 rd = redis.StrictRedis(host='10.102.185.56', port=6379, db=0)
