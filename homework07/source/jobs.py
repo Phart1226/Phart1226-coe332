@@ -47,7 +47,7 @@ def update_job_status(jid, new_status):
     job = _instantiate_job(jid, status, start, end)
     if job:
         job['status'] = new_status
-        job['worker'] = os.environ.get('WORKER_IP')
+        job['worker'] = os.environ['WORKER_IP']
         _save_job(_generate_job_key(job['id']), job)
     else:
         raise Exception()
