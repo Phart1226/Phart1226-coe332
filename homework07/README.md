@@ -65,7 +65,7 @@ def update_job_status(jid, new_status):
     job = _instantiate_job(jid, status, start, end)
     if job:
         job['status'] = new_status
-        job['worker'] = os.environ.get('WORKER_IP')
+        job['worker'] = os.environ['WORKER_IP']
         _save_job(_generate_job_key(job['id']), job)
     else:
         raise Exception()
@@ -77,23 +77,23 @@ After the worker pod was scaled to two deployments, 10 POST requests creating ne
 
 ```bash
 root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
-{"id": "3cfbf506-97c9-4810-90ef-2775d37325cb", "status": "submitted", "start": "Start Now", "end": "End Now"}root@py-debug-deployment-5cc8cdd65f-r68b4:/#
+{"id": "3cfbf506-97c9-4810-90ef-2775d37325cb", "status": "submitted", "start": "Start Now", "end": "End Now"}
 root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
-{"id": "fed60f96-ec91-40d3-b370-509f971321b9", "status": "submitted", "start": "Start Now", "end": "End Now"}root@py-debug-deployment-5cc8cdd65f-r68b4:/#
+{"id": "fed60f96-ec91-40d3-b370-509f971321b9", "status": "submitted", "start": "Start Now", "end": "End Now"}
 root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
-{"id": "8c7dbf81-dd4f-459e-93b7-e0320476076f", "status": "submitted", "start": "Start Now", "end": "End Now"}root@py-debug-deployment-5cc8cdd65f-r68b4:/#
+{"id": "8c7dbf81-dd4f-459e-93b7-e0320476076f", "status": "submitted", "start": "Start Now", "end": "End Now"}
 root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
-{"id": "b7f26c82-c622-4756-bdad-29cb4e86377a", "status": "submitted", "start": "Start Now", "end": "End Now"}root@py-debug-deployment-5cc8cdd65f-r68b4:/#
+{"id": "b7f26c82-c622-4756-bdad-29cb4e86377a", "status": "submitted", "start": "Start Now", "end": "End Now"}
 root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
-{"id": "2404c288-9e52-4fdb-bc05-533a3213b720", "status": "submitted", "start": "Start Now", "end": "End Now"}root@py-debug-deployment-5cc8cdd65f-r68b4:/#
+{"id": "2404c288-9e52-4fdb-bc05-533a3213b720", "status": "submitted", "start": "Start Now", "end": "End Now"}
 root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
-{"id": "57e47ab2-3738-492c-b1cf-64bc9bcf8ea2", "status": "submitted", "start": "Start Now", "end": "End Now"}root@py-debug-deployment-5cc8cdd65f-r68b4:/#
+{"id": "57e47ab2-3738-492c-b1cf-64bc9bcf8ea2", "status": "submitted", "start": "Start Now", "end": "End Now"}
 root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
-{"id": "25439216-cb27-4969-ac8a-8a81615d1da8", "status": "submitted", "start": "Start Now", "end": "End Now"}root@py-debug-deployment-5cc8cdd65f-r68b4:/#
+{"id": "25439216-cb27-4969-ac8a-8a81615d1da8", "status": "submitted", "start": "Start Now", "end": "End Now"}
 root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
-{"id": "cd6982e4-5d5d-4ac3-8434-7cab116f9b1c", "status": "submitted", "start": "Start Now", "end": "End Now"}root@py-debug-deployment-5cc8cdd65f-r68b4:/#
-root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
-{"id": "afec7e4a-ff98-4e8e-b06e-612e01a2583c", "status": "submitted", "start": "Start Now", "end": "End Now"}root@py-debug-deployment-5cc8cdd65f-r68b4:/#
+{"id": "cd6982e4-5d5d-4ac3-8434-7cab116f9b1c", "status": "submitted", "start": "Start Now", "end": "End Now"}
+root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end": "End Now"}' 10.109.147.196:5000/jobs
+{"id": "afec7e4a-ff98-4e8e-b06e-612e01a2583c", "status": "submitted", "start": "Start Now", "end": "End Now"}
 root@py-debug-deployment-5cc8cdd65f-r68b4:/# curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
 {"id": "9b17e5ba-87ac-41b1-87a3-2e7d8628ec4b", "status": "submitted", "start": "Start Now", "end": "End Now"}
 ```
