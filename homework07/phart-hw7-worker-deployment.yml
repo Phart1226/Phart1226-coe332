@@ -4,8 +4,6 @@ kind: Deployment
 metadata:
   name: phart-hw7-worker-deployment
   labels:
-    username: phart
-    env: test
     app: phart-hw7-worker
 spec:
   replicas: 1
@@ -21,4 +19,9 @@ spec:
         - name: worker-container
           imagePullPolicy: Always
           image: phart26/phart-hw7
-          command: ['python', 'api.py']
+          env:
+          - name: FLASK_APP
+            value: "worker.py"
+          ports:
+          - name: http
+            containerPort: 5000 

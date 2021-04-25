@@ -1,16 +1,53 @@
-# Homework 06
+# Homework 07
 
-For Homework 06, the goal was to create a test environment for the Flask API, built in previous homeworks, using Kubernetes.   
+For Homework 07, the goal was to create an architecture for using the Flask app by creating job requests to ping the specific routes within app.py. This architecture involves a worker, api, and job manager in addition to the previous Flask app and redis database previously running on kubernetes.
 
-## Vizualizing the pods 
+## Part A
 
-After following the steps outlined in the the read the docs for Homework 06, we can run some kubectl commands to see the live services/deployments/pods created for the Flask app and redis database.
+From an in class exercise, the code for the api, worker, and the job manager were added to the preexsiting web folder and a new docker image was built from an updated dockerfile that now includes these files in the source code. The old Flask app code was updated with the new IP address of the Redis service running on Kubernetes.
 
-Running the command below will give a list of local pods that are up and running
+The following commands were run to get all the deployments and servies needed for this homework assignment up and run
+ning.
 
 ```bash
-kubectl get pods
+kubectl apply -f phart-hw7-flask-deployment.yml
 ```
+```bash
+kubectl apply -f phart-hw7-flask-service.yml
+```
+```bash
+kubectl apply -f phart-hw7-redis-deployment.yml
+```
+```bash
+kubectl apply -f phart-hw7-redis-pvc.yml
+```
+```bash
+kubectl apply -f phart-hw7-redis-service.yml
+```
+```bash
+kubectl apply -f phart-hw7-worker-deployment.yml
+```
+
+To exec into the python debug pod to curl the route to the Flask app to test the functionality of the job messaging system:
+
+```bash
+kubectl exec -it py-debug-deployment-5cc8cdd65f-7cb68 -- /bin/bash
+```
+
+Once inside the following curl statement was used three times to create three new jobs:
+```bash
+curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
+```
+
+Output from the curl statements produced by the api.py route:
+```bash
+{"id": "ac58f7b1-9575-4907-9461-a8a749efe211", "status": "submitted", "start": "Start Now", "end": "End Now"}
+{"id": "0286f0b5-95c4-43ee-a491-535057b95088", "status": "submitted", "start": "Start Now", "end": "End Now"}
+{"id": "efdc7fbf-07db-4378-a841-ecda4af65dc7", "status": "submitted", "start": "Start Now", "end": "End Now"}
+```
+
+To make sure the worker is successfully completing these jobs, go into a python shell and run the follwing script:
+```bash
 
 For me the above command shows the following output:
 
