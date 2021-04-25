@@ -28,6 +28,8 @@ spec:
               valueFrom:
                 fieldRef: 
                   fieldPath: status.podIP
+            - name: WORKER
+              value: "worker.py"
           ports:
           - name: http
             containerPort: 5000 
