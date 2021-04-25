@@ -1,4 +1,5 @@
 from jobs import q, update_job_status
+import time
 
 @q.worker
 def execute_job(jid):
