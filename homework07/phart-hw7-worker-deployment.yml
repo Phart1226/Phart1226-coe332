@@ -5,8 +5,10 @@ metadata:
   name: phart-hw7-worker-deployment
   labels:
     app: phart-hw7-worker
+    username: phart
+    env: test
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: phart-hw7-worker
@@ -14,14 +16,21 @@ spec:
     metadata:
       labels:
         app: phart-hw7-worker
+        username: phart
+        env: test
     spec:
       containers:
         - name: worker-container
           imagePullPolicy: Always
           image: phart26/phart-hw7
           env:
-          - name: FLASK_APP
-            value: "worker.py"
+            - name: "WORKER_IP"
+              valueFrom:
+                fieldRef: 
+                  fieldPath: status.podIP
+          env:
+            - name: Worker
+              value: "worker.py"
           ports:
           - name: http
             containerPort: 5000 

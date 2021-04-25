@@ -1,6 +1,7 @@
 import uuid
 from hotqueue import HotQueue
 import redis
+import os
 
 q = HotQueue("queue", host='10.102.185.56', port=6379, db=1)
 rd = redis.StrictRedis(host='10.102.185.56', port=6379, db=0)
@@ -46,6 +47,7 @@ def update_job_status(jid, new_status):
     job = _instantiate_job(jid, status, start, end)
     if job:
         job['status'] = new_status
+        job['worker'] = os.environ.get('WORKER_IP')
         _save_job(_generate_job_key(job['id']), job)
     else:
         raise Exception()

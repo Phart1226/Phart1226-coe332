@@ -5,6 +5,8 @@ metadata:
   name: phart-hw7-flask-deployment
   labels:
     app: phart-hw7-flask
+    username: phart
+    env: test
 spec:
   replicas: 1
   selector:
@@ -21,7 +23,7 @@ spec:
           image: phart26/phart-hw7
           command: ['python', 'api.py']
           env:
-          - name: FLASK_APP
+          - name: FlaskApp
             value: "api.py"
           ports:
           - name: http
