@@ -1,12 +1,12 @@
 # Homework 07
 
-For Homework 07, the goal was to create an architecture for using the Flask app by creating job requests to ping the specific routes within app.py. This architecture involves a worker, api, and job manager in addition to the previous Flask app and redis database previously running on kubernetes.
+For Homework 07, the goal was to create an architecture for using the Flask app by creating job requests to ping a specific route within api.py that creates a job request. This architecture involves a worker, api, and job manager in addition to the previous Flask app and redis database previously running on kubernetes.
 
 ## Part A
 
-From an in class exercise, the code for the api, worker, and the job manager were added to the preexsiting web folder and a new docker image was built from an updated dockerfile that now includes these files in the source code. The old Flask app code was updated with the new IP address of the Redis service running on Kubernetes.
+From an in class exercise, the code for the api, worker, and the job manager were pushed to a docker hub and a new docker image was built from an updated dockerfile that now includes these files in the source code.
 
-The following commands were run to get all the deployments and servies needed for this homework assignment up and run
+The following commands were run to get all the deployments and services needed for this homework assignment up and run
 ning.
 
 ```bash
@@ -34,7 +34,7 @@ To exec into the python debug pod to curl the route to the Flask app to test the
 kubectl exec -it py-debug-deployment-5cc8cdd65f-7cb68 -- /bin/bash
 ```
 
-Once inside the following curl statement was used three times to create three new jobs:
+Once inside, the following curl statement was used three times to create a new job:
 ```bash
 curl -X POST -H "content-type: application/json" -d '{"start": "Start Now", "end":"End Now"}' 10.109.147.196:5000/jobs
 ```
@@ -56,7 +56,7 @@ To make sure the worker is successfully completing the job, go into a python she
 
 ## Part B
 
-In order to add the IP address of the worker pod that completed the job request, the os library was imoprted into jobs.py and a new worker tag was added to the JSON data for the job when the update\_job\_status() function is called fro m the worker.
+In order to add the IP address of the worker pod that completed the job request, the os library was imoprted into jobs.py and a new worker tag was added to the JSON data for the job when the update\_job\_status() function is called from the worker.
 
 ```bash
 def update_job_status(jid, new_status):
